@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View, Alert} from 'react-native';
 import uuid from 'react-native-uuid';
+import AddItem from './components/add_item';
 
 import Header from './components/header';
 import ListItem from './components/list_item';
@@ -30,9 +31,25 @@ const App = () => {
     setItems(newItems);
   }
 
+  function addItem(text) {
+    if (text) {
+      setItems(prevItems => {
+        return [{id: uuid.v4(), title: text}, ...prevItems];
+      });
+    } else {
+      Alert.alert('Error', 'Please enter an item', [
+        {
+          text: 'Ok',
+          onPress: () => console.log('Ok clicked'),
+        },
+      ]);
+    }
+  }
+
   return (
     <View style={styles.mainContainer}>
       <Header />
+      <AddItem addItem={text => addItem(text)} />
       <FlatList
         data={items}
         renderItem={({item}) => (

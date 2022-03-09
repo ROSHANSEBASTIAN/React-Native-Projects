@@ -15,8 +15,10 @@ export default function ListItem(props) {
     <TouchableOpacity style={styles.listItemTouchable}>
       <View style={styles.listItemContainer}>
         <Text style={styles.itemTitle}>{item.title}</Text>
-        <TouchableOpacity onPress={() => onDeleteButtonClicked()}>
-          <DeleteIcon width={20} height={20} />
+        <TouchableOpacity
+          onPress={() => onDeleteButtonClicked()}
+          style={styles.deleteButtonContainer}>
+          <DeleteIcon width={20} height={20} color={'#FF0000'} />
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
@@ -38,6 +40,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     elevation: 5,
     borderRadius: 5,
+  },
+  deleteButtonContainer: {
+    borderWidth: 1,
+    borderColor: 'red',
+    borderRadius: 3,
+    padding: 5,
   },
   listItemContainer: {
     flexDirection: 'row',
