@@ -9,17 +9,18 @@ export default function Header({title}) {
   );
 }
 
-Header.defaultProps = {title: 'Hey There'};
+Header.defaultProps = {title: 'Shopping List'};
 
 const styles = StyleSheet.create({
   headerStyle: {
-    minHeight: 100,
-    backgroundColor: 'yellow',
+    height: 80,
+    backgroundColor: 'green',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
   },
   headerTitle: {
-    color: 'grey',
+    color: 'white',
     fontSize: 20,
   },
 });
